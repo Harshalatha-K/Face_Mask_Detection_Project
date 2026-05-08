@@ -1,11 +1,12 @@
-
 import streamlit as st
 from PIL import Image
 import numpy as np
-import tensorflow as tf
 
-# Load TFLite model
-interpreter = tf.lite.Interpreter(model_path="model.tflite")
+# Import TFLite runtime
+from tflite_runtime.interpreter import Interpreter
+
+# Load model
+interpreter = Interpreter(model_path="model.tflite")
 interpreter.allocate_tensors()
 
 input_details = interpreter.get_input_details()
